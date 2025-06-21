@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="style.css">
+    <title>happy bday - korok</title>
+</head>
+<body>
+    <div class="container">
+        <div id="korok">
+            <img src="korok.png" alt="korok">
+        </div>
+        <div id="rock">
+            <img src="rock.png" alt="rock">
+        </div>
+        <div id="text">
+            <img src="text.png" alt="rock">
+        </div>
+    </div>
+
+
+    <script>
+        const rock = document.getElementById("rock");
+        const rockSound = new Audio("sound.mp3");
+        const text = document.getElementById("text");
+    
+        rock.addEventListener("click", () => {
+            rock.classList.toggle("levantado");
+    
+            if (rock.classList.contains("levantado")) {
+                rockSound.currentTime = 0;
+                rockSound.play();
+    
+                text.style.display = "none"; 
+                text.classList.remove("animando");
+    
+                setTimeout(() => {
+                    text.style.display = "block";
+                    void text.offsetWidth;
+                    text.classList.add("animando");
+                }, 2000);
+            } else {
+                text.style.display = "none";
+                text.classList.remove("animando");
+            }
+        });
+    </script>
+</body>
+</html>

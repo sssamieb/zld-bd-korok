@@ -1,0 +1,95 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #7faf66;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#korok, #rock {
+    position: absolute;
+}
+
+#korok {
+    top: 15px; 
+    left: 0px;
+    z-index: 1;
+}
+
+#rock {
+    top: -30px;   
+    left: 0px;
+    z-index: 2;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+#rock.levantado {
+    transform: translateY(-500px); /* levanta el rock */
+}
+
+#korok img {
+    width: 90%;  
+}
+
+#rock img {
+    width: 100%;  
+}
+#text {
+    display: none;
+    position: absolute;
+    top: 200px; /* posición final deseada */
+    left: 30%;
+    transform: translateX(-50%) translateY(50px); /* empezar más abajo */
+    z-index: 2;
+    opacity: 0;
+    animation: subirTexto 1s ease-out forwards;
+}
+
+#text img {
+    width: 150%;
+}
+
+
+@keyframes subirTexto {
+    0% {
+        transform: translateX(-50%) translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+.animando {
+    animation: subirTexto 1s ease-out forwards;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin-top: 150px; /* o lo que te guste */
+    }
+    #rock {
+        top: -20px;   
+    }
+    #korok {
+        top: 20px;
+        left: 30px;
+    }
+    #text img {
+        width: 100%;
+    }
+    #text {
+        top: 195px;
+        left: 50%;
+    }
+}
